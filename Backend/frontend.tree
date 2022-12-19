@@ -1,0 +1,82 @@
+{DEFS, NULL,
+	{NVAR, g,
+		{}
+		{CONST, 1.000,
+			{}
+			{}
+		}
+	}
+	{DEFS, NULL,
+		{NFUN, GetNextNumber,
+			{ARG, a,
+				{}
+				{}
+			}
+			{SEQ, NULL,
+				{RET, NULL,
+					{}
+					{OP, ADD,
+						{VAR, a,
+							{}
+							{}
+						}
+						{VAR, GLOBAL_VARIABLE,
+							{}
+							{}
+						}
+					}
+				}
+				{}
+			}
+		}
+		{DEFS, NULL,
+			{NFUN, main,
+				{}
+				{SEQ, NULL,
+					{NVAR, a,
+						{}
+						{CONST, 0.000,
+							{}
+							{}
+						}
+					}
+					{SEQ, NULL,
+						{CALL, GetNextNumber,
+							{}
+							{PAR, NULL,
+								{VAR, a,
+									{}
+									{}
+								}
+								{}
+							}
+						}
+						{SEQ, NULL,
+							{CALL, print,
+								{}
+								{PAR, NULL,
+									{VAR, a,
+										{}
+										{}
+									}
+									{}
+								}
+							}
+							{SEQ, NULL,
+								{RET, NULL,
+									{}
+									{CONST, 1.000,
+										{}
+										{}
+									}
+								}
+								{}
+							}
+						}
+					}
+				}
+			}
+			{}
+		}
+	}
+}

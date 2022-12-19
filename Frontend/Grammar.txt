@@ -1,0 +1,25 @@
+PROGRAM       ::=  DEF 'END'
+DEF           ::=  [NFUNC  |  NVAR]+
+NFUNC         ::= 'Define'   NAME '(' PAR ')' BLOCK
+NVAR          ::= 'var' NAME EXPRESSION
+PAR           ::=  {NAME [',' NAME]*}?
+BLOCK         ::= '{' [STATEMENT]+ '}'
+STATEMENT     ::=  NVAR | ASS | WHILE | IF | CALL | RET
+ASS           ::=  NAME  '='  EXPRESSION
+WHILE         ::= 'While' EXPINBRACKETS BLOCK
+IF            ::= 'If' EXPRINBRACKETS BLOCK {else BLOCK }
+CALL          ::= 'Call' NAME '(' ARG ')'
+RET           ::= 'return' EXPRESSION
+ARG           ::=  {EXPRESSION [',' EXPRESSION]*}?
+EXPINBRACKETS ::= '(' EXPRESSION ')'
+EXPRESSION    ::=  AND ['OR' AND]*
+AND           ::=  NOT ['AND' NOT]*
+NOT           ::= 'NOT'? COMPARE
+COMPARE       ::=  SUM [{'GT', 'LT', 'GEQ', 'LEQ', 'EQ', 'NEQ'} SUM]?
+SUM           ::=  MUL [{'+', '-'} MUL]*
+MUL           ::=  UNARY [{'*', '/'} UNARY]*
+UNARY         ::=  {'+', '-'}? BRACKETS
+BRACKETS      ::=  CALL | VAR | NUM | EXPINBRACKETS
+VAR           ::=  NAME
+NUM           ::=  ['0'-'9']+
+NAME          ::=  ['a'-'z']+ ['a'-'z' 'A'-'Z' '_']*

@@ -1,0 +1,15 @@
+var g 1
+
+define GetNextNumber(a)
+{
+    return a + GLOBAL_VARIABLE
+}
+
+define main()
+{
+    var a 0
+    call GetNextNumber(a)
+    call print(a)
+
+    return 1
+}
