@@ -134,6 +134,9 @@ void treePrint(FILE *stream, const Node *node, int space)
         fprintf(stream, "\n");
 
         treePrint(stream, node->left,  space + 1);
+      
+        fprintf(stream, ",");
+      
         treePrint(stream, node->right, space + 1);
 
         setSpace(stream, space);
