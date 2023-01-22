@@ -121,7 +121,7 @@ void nodeDtor(Node *node)
     }
 }
 
-void treePrint(FILE *stream, const Node *node, int space)
+void treePrint(FILE *stream, const Node *node, int space, bool needComma)
 {    
     assert(stream);
 
@@ -133,19 +133,16 @@ void treePrint(FILE *stream, const Node *node, int space)
         printNodeData(stream, node->type, node->value);
         fprintf(stream, "\n");
 
-        treePrint(stream, node->left,  space + 1);
-      
-        fprintf(stream, ",");
-      
-        treePrint(stream, node->right, space + 1);
+        treePrint(stream, node->left,  space + 1, true);
+        treePrint(stream, node->right, space + 1, false);
 
         setSpace(stream, space);
     }
 
-    fprintf(stream, "}\n");
+    fprintf(stream, "}%s\n", (needComma) ? "," : "");
 }
 
-void treePrint(const char *filename, const Node *node, int space)
+void treePrint(const char *filename, const Node *node, int space, bool needComma)
 {
     FILE *stream = fopen(filename, "w");
     if (stream == nullptr)
@@ -154,7 +151,7 @@ void treePrint(const char *filename, const Node *node, int space)
         return;
     }
 
-    treePrint(stream, node, space);
+    treePrint(stream, node, space, needComma);
 }
 
 void treeGraphDump(const Node *node)

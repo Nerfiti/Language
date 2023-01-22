@@ -8,9 +8,9 @@ node0 -> node1 [color = "red"]
 
 node1 -> node2 [color = "green"]
 
-node2 [fillcolor = springGreen, label = "Type: CONST|Value: 1.000"]
+node2 [fillcolor = springGreen, label = "Type: CONST|Value: 0.000"]
 
-node1 [fillcolor = cornflowerblue, label = "Type: NVAR|Value: g"]
+node1 [fillcolor = cornflowerblue, label = "Type: NVAR|Value: GLOBAL"]
 
 node0 -> node5 [color = "green"]
 
@@ -18,93 +18,333 @@ node5 -> node6 [color = "red"]
 
 node6 -> node7 [color = "red"]
 
-node7 [fillcolor = springGreen, label = "Type: ARG|Value: a"]
+node7 [fillcolor = springGreen, label = "Type: ARG|Value: num"]
 
 node6 -> node9 [color = "green"]
 
-node9 -> node10 [color = "red"]
+node9 -> node10 [color = "green"]
 
-node10 -> node11 [color = "green"]
+node10 -> node11 [color = "red"]
 
-node11 -> node12 [color = "red"]
+node11 -> node12 [color = "green"]
 
-node12 [fillcolor = springGreen, label = "Type: VAR|Value: a"]
+node12 -> node13 [color = "red"]
 
-node11 -> node14 [color = "green"]
+node13 [fillcolor = springGreen, label = "Type: VAR|Value: num"]
 
-node14 [fillcolor = springGreen, label = "Type: VAR|Value: GLOBAL_VARIABLE"]
+node12 -> node15 [color = "green"]
 
-node11 [fillcolor = cornflowerblue, label = "Type: OP|Value: ADD"]
+node15 [fillcolor = springGreen, label = "Type: CONST|Value: 1.000"]
 
-node10 [fillcolor = cornflowerblue, label = "Type: RET|Value: NULL"]
+node12 [fillcolor = cornflowerblue, label = "Type: OP|Value: SUB"]
 
-node9 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+node11 [fillcolor = cornflowerblue, label = "Type: RET|Value: NULL"]
 
-node6 [fillcolor = cornflowerblue, label = "Type: NFUN|Value: GetNextNumber"]
+node10 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
 
-node5 -> node20 [color = "green"]
+node9 [fillcolor = cornflowerblue, label = "Type: BLOCK|Value: NULL"]
 
-node20 -> node21 [color = "red"]
+node6 [fillcolor = cornflowerblue, label = "Type: NFUN|Value: GetPrevNumber"]
 
-node21 -> node22 [color = "green"]
+node5 -> node22 [color = "green"]
 
 node22 -> node23 [color = "red"]
 
 node23 -> node24 [color = "green"]
 
-node24 [fillcolor = springGreen, label = "Type: CONST|Value: 0.000"]
+node24 -> node25 [color = "green"]
 
-node23 [fillcolor = cornflowerblue, label = "Type: NVAR|Value: a"]
+node25 -> node26 [color = "red"]
 
-node22 -> node27 [color = "green"]
+node26 -> node27 [color = "green"]
 
-node27 -> node28 [color = "red"]
+node27 [fillcolor = springGreen, label = "Type: CONST|Value: 1.000"]
 
-node28 -> node29 [color = "green"]
+node26 [fillcolor = cornflowerblue, label = "Type: NVAR|Value: number"]
 
-node29 -> node30 [color = "red"]
+node25 -> node30 [color = "green"]
 
-node30 [fillcolor = springGreen, label = "Type: VAR|Value: a"]
+node30 -> node31 [color = "red"]
 
-node29 [fillcolor = cornflowerblue, label = "Type: PAR|Value: NULL"]
+node31 -> node32 [color = "green"]
 
-node28 [fillcolor = cornflowerblue, label = "Type: CALL|Value: GetNextNumber"]
+node32 -> node33 [color = "green"]
 
-node27 -> node34 [color = "green"]
+node33 -> node34 [color = "red"]
 
 node34 -> node35 [color = "red"]
 
-node35 -> node36 [color = "green"]
+node35 [fillcolor = springGreen, label = "Type: VAR|Value: number"]
 
-node36 -> node37 [color = "red"]
+node34 -> node37 [color = "green"]
 
-node37 [fillcolor = springGreen, label = "Type: VAR|Value: a"]
+node37 [fillcolor = springGreen, label = "Type: CONST|Value: 2.000"]
 
-node36 [fillcolor = cornflowerblue, label = "Type: PAR|Value: NULL"]
+node34 [fillcolor = cornflowerblue, label = "Type: OP|Value: ADD"]
 
-node35 [fillcolor = cornflowerblue, label = "Type: CALL|Value: print"]
+node33 [fillcolor = cornflowerblue, label = "Type: PAR|Value: NULL"]
 
-node34 -> node41 [color = "green"]
+node32 [fillcolor = cornflowerblue, label = "Type: CALL|Value: factorial"]
 
-node41 -> node42 [color = "red"]
+node31 [fillcolor = cornflowerblue, label = "Type: NVAR|Value: fact"]
 
-node42 -> node43 [color = "green"]
+node30 -> node43 [color = "green"]
 
-node43 [fillcolor = springGreen, label = "Type: CONST|Value: 1.000"]
+node43 -> node44 [color = "red"]
 
-node42 [fillcolor = cornflowerblue, label = "Type: RET|Value: NULL"]
+node44 -> node45 [color = "green"]
 
-node41 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+node45 -> node46 [color = "red"]
 
-node34 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+node46 -> node47 [color = "green"]
 
-node27 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+node47 -> node48 [color = "red"]
 
-node22 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+node48 [fillcolor = springGreen, label = "Type: VAR|Value: fact"]
 
-node21 [fillcolor = cornflowerblue, label = "Type: NFUN|Value: main"]
+node47 [fillcolor = cornflowerblue, label = "Type: PAR|Value: NULL"]
 
-node20 [fillcolor = cornflowerblue, label = "Type: DEFS|Value: NULL"]
+node46 [fillcolor = cornflowerblue, label = "Type: CALL|Value: print"]
+
+node45 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+
+node44 [fillcolor = cornflowerblue, label = "Type: BLOCK|Value: NULL"]
+
+node43 -> node54 [color = "green"]
+
+node54 -> node55 [color = "red"]
+
+node55 -> node56 [color = "red"]
+
+node56 -> node57 [color = "red"]
+
+node57 -> node58 [color = "red"]
+
+node58 [fillcolor = springGreen, label = "Type: VAR|Value: fact"]
+
+node57 -> node60 [color = "green"]
+
+node60 [fillcolor = springGreen, label = "Type: CONST|Value: 1.000"]
+
+node57 [fillcolor = cornflowerblue, label = "Type: OP|Value: NEQ"]
+
+node56 -> node63 [color = "green"]
+
+node63 -> node64 [color = "red"]
+
+node64 [fillcolor = springGreen, label = "Type: CONST|Value: 1.000"]
+
+node63 -> node66 [color = "green"]
+
+node66 [fillcolor = springGreen, label = "Type: CONST|Value: 0.000"]
+
+node63 [fillcolor = cornflowerblue, label = "Type: OP|Value: LT"]
+
+node56 [fillcolor = cornflowerblue, label = "Type: OP|Value: OR"]
+
+node55 -> node70 [color = "green"]
+
+node70 -> node71 [color = "green"]
+
+node71 -> node72 [color = "red"]
+
+node72 -> node73 [color = "green"]
+
+node73 -> node74 [color = "green"]
+
+node74 -> node75 [color = "red"]
+
+node75 [fillcolor = springGreen, label = "Type: VAR|Value: fact"]
+
+node74 [fillcolor = cornflowerblue, label = "Type: PAR|Value: NULL"]
+
+node73 [fillcolor = cornflowerblue, label = "Type: CALL|Value: GetPrevNumber"]
+
+node72 [fillcolor = cornflowerblue, label = "Type: ASS|Value: fact"]
+
+node71 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+
+node70 [fillcolor = cornflowerblue, label = "Type: BLOCK|Value: NULL"]
+
+node55 [fillcolor = cornflowerblue, label = "Type: WHILE|Value: NULL"]
+
+node54 -> node83 [color = "green"]
+
+node83 -> node84 [color = "red"]
+
+node84 -> node85 [color = "red"]
+
+node85 -> node86 [color = "red"]
+
+node86 -> node87 [color = "red"]
+
+node87 [fillcolor = springGreen, label = "Type: VAR|Value: a"]
+
+node86 -> node89 [color = "green"]
+
+node89 [fillcolor = springGreen, label = "Type: VAR|Value: fact"]
+
+node86 [fillcolor = cornflowerblue, label = "Type: OP|Value: EQ"]
+
+node85 -> node92 [color = "green"]
+
+node92 -> node93 [color = "red"]
+
+node93 [fillcolor = springGreen, label = "Type: CONST|Value: 1.000"]
+
+node92 -> node95 [color = "green"]
+
+node95 [fillcolor = springGreen, label = "Type: CONST|Value: 1.000"]
+
+node92 [fillcolor = cornflowerblue, label = "Type: OP|Value: GT"]
+
+node85 [fillcolor = cornflowerblue, label = "Type: OP|Value: AND"]
+
+node84 -> node99 [color = "green"]
+
+node99 -> node100 [color = "red"]
+
+node100 -> node101 [color = "green"]
+
+node101 -> node102 [color = "red"]
+
+node102 -> node103 [color = "green"]
+
+node103 -> node104 [color = "red"]
+
+node104 -> node105 [color = "red"]
+
+node105 -> node106 [color = "red"]
+
+node106 [fillcolor = springGreen, label = "Type: VAR|Value: fact"]
+
+node105 -> node108 [color = "green"]
+
+node108 [fillcolor = springGreen, label = "Type: CONST|Value: 1.000"]
+
+node105 [fillcolor = cornflowerblue, label = "Type: OP|Value: ADD"]
+
+node104 -> node111 [color = "green"]
+
+node111 [fillcolor = springGreen, label = "Type: CONST|Value: 1.000"]
+
+node104 [fillcolor = cornflowerblue, label = "Type: OP|Value: MUL"]
+
+node103 -> node114 [color = "green"]
+
+node114 [fillcolor = springGreen, label = "Type: CONST|Value: 1.000"]
+
+node103 [fillcolor = cornflowerblue, label = "Type: OP|Value: DIV"]
+
+node102 [fillcolor = cornflowerblue, label = "Type: ASS|Value: fact"]
+
+node101 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+
+node100 [fillcolor = cornflowerblue, label = "Type: BLOCK|Value: NULL"]
+
+node99 -> node120 [color = "green"]
+
+node120 -> node121 [color = "green"]
+
+node121 -> node122 [color = "red"]
+
+node122 -> node123 [color = "green"]
+
+node123 -> node124 [color = "red"]
+
+node124 [fillcolor = springGreen, label = "Type: VAR|Value: fact"]
+
+node123 -> node126 [color = "green"]
+
+node126 [fillcolor = springGreen, label = "Type: CONST|Value: 1.000"]
+
+node123 [fillcolor = cornflowerblue, label = "Type: OP|Value: SUB"]
+
+node122 [fillcolor = cornflowerblue, label = "Type: ASS|Value: fact"]
+
+node121 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+
+node120 [fillcolor = cornflowerblue, label = "Type: BLOCK|Value: NULL"]
+
+node99 [fillcolor = cornflowerblue, label = "Type: BRANCH|Value: NULL"]
+
+node84 [fillcolor = cornflowerblue, label = "Type: IF|Value: NULL"]
+
+node83 -> node134 [color = "green"]
+
+node134 -> node135 [color = "red"]
+
+node135 -> node136 [color = "green"]
+
+node136 -> node137 [color = "red"]
+
+node137 [fillcolor = springGreen, label = "Type: VAR|Value: fact"]
+
+node136 -> node139 [color = "green"]
+
+node139 [fillcolor = springGreen, label = "Type: CALL|Value: GetMinusOne"]
+
+node136 [fillcolor = cornflowerblue, label = "Type: OP|Value: ADD"]
+
+node135 [fillcolor = cornflowerblue, label = "Type: RET|Value: NULL"]
+
+node134 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+
+node83 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+
+node54 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+
+node43 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+
+node30 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+
+node25 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+
+node24 [fillcolor = cornflowerblue, label = "Type: BLOCK|Value: NULL"]
+
+node23 [fillcolor = cornflowerblue, label = "Type: NFUN|Value: main"]
+
+node22 -> node151 [color = "green"]
+
+node151 -> node152 [color = "red"]
+
+node152 -> node153 [color = "green"]
+
+node153 -> node154 [color = "green"]
+
+node154 -> node155 [color = "red"]
+
+node155 -> node156 [color = "green"]
+
+node156 -> node157 [color = "red"]
+
+node157 -> node158 [color = "green"]
+
+node158 -> node159 [color = "green"]
+
+node159 [fillcolor = springGreen, label = "Type: CONST|Value: 5.000"]
+
+node158 [fillcolor = cornflowerblue, label = "Type: OP|Value: NEG"]
+
+node157 [fillcolor = cornflowerblue, label = "Type: OP|Value: NOT"]
+
+node156 -> node163 [color = "green"]
+
+node163 [fillcolor = springGreen, label = "Type: CONST|Value: 1.000"]
+
+node156 [fillcolor = cornflowerblue, label = "Type: OP|Value: SUB"]
+
+node155 [fillcolor = cornflowerblue, label = "Type: RET|Value: NULL"]
+
+node154 [fillcolor = cornflowerblue, label = "Type: SEQ|Value: NULL"]
+
+node153 [fillcolor = cornflowerblue, label = "Type: BLOCK|Value: NULL"]
+
+node152 [fillcolor = cornflowerblue, label = "Type: NFUN|Value: GetMinusOne"]
+
+node151 [fillcolor = cornflowerblue, label = "Type: DEFS|Value: NULL"]
+
+node22 [fillcolor = cornflowerblue, label = "Type: DEFS|Value: NULL"]
 
 node5 [fillcolor = cornflowerblue, label = "Type: DEFS|Value: NULL"]
 

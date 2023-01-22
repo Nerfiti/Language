@@ -17,7 +17,7 @@ void execute(FILE *program)
     
     FILE *tree = fopen("../Backend/frontend.tree", "w");
 
-    treePrint(tree, node, 0);
+    treePrint(tree, node, 0, false);
 
     treeDtor(node);
     StackDtor(&stk);

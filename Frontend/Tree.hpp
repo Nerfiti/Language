@@ -42,8 +42,8 @@ Node *addToRight (Node *node, const char *type, const char *data );
 void  treeDtor   (Node *node);
 void  nodeDtor   (Node *node);
 
-void treePrint     (FILE *stream,         const Node *node, int space);
-void treePrint     (const char *filename, const Node *node, int space);
+void treePrint     (FILE *stream,         const Node *node, int space, bool needComma);
+void treePrint     (const char *filename, const Node *node, int space, bool needComma);
 void treeGraphDump (const Node *node);
 
 Node *copyNode (Node *node);

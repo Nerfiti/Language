@@ -169,16 +169,20 @@ Node *GetFunction(stack_id stk, int *pos)
         (*pos)++;
         label = GetLabel(stk, pos);
 
-        if (GetItem(stk, *pos).type != OPEN_BRACKET)
+        if ((Token = GetItem(stk, *pos)).type != OPEN_BRACKET)
         {
             REPORT("Expexted '('");
         }
         (*pos)++;
 
-        par = GetParametres(stk, pos);
-
-        if (GetItem(stk, *pos).type != CLOSE_BRACKET)
+        if ((Token = GetItem(stk, *pos)).type != CLOSE_BRACKET)
         {
+            par = GetParametres(stk, pos);
+        }
+        
+        if ((Token = GetItem(stk, *pos)).type != CLOSE_BRACKET)
+        {
+            printf("Item init symbol = \n\n");
             REPORT("Expected ')'");
         }
         (*pos)++;
@@ -225,6 +229,7 @@ Node *GetParametres(stack_id stk, int *pos)
     {
         return nullptr;
     }
+
     Node *pars = CreateNode("ARG", GetLabel(stk, pos), nullptr, nullptr);
     Node *cur  = pars;
 
@@ -239,6 +244,12 @@ Node *GetParametres(stack_id stk, int *pos)
             cur->right = CreateNode("ARG", GetLabel(stk, pos), nullptr, nullptr);
             cur = cur->right; 
         }
+        else
+        {
+            REPORT("parameter label");
+        }
+
+        Token = GetItem(stk, *pos);
     }
     return pars;
 }
@@ -247,11 +258,14 @@ Node *GetBlock(stack_id stk, int *pos)
 {
     assert(pos);
 
+    Node *block = CreateNode("BLOCK", "NULL", nullptr, nullptr);
+
     token Token = GetItem(stk, *pos);
     if (Token.type != BLOCK_OPEN_BRACKET)
     {
         REPORT("Expected '{'");
     }
+    
     (*pos)++;
     Token = GetItem(stk, *pos);
 
@@ -261,8 +275,8 @@ Node *GetBlock(stack_id stk, int *pos)
         REPORT("Expected statement\n");
     }
 
-    Node *block = CreateNode("SEQ", "NULL", node, nullptr);
-    Node *cur   = block;
+    block->right = CreateNode("SEQ", "NULL", node, nullptr);
+    Node *cur    = block->right;
 
     while(node = GetStatement(stk, pos))
     {
@@ -340,6 +354,10 @@ Node *GetStatement(stack_id stk, int *pos)
     else if (Token.type == RET)
     {
         return GetRetStatement(stk, pos);
+    }
+    else if (Token.type == BLOCK_OPEN_BRACKET)
+    {
+        return GetBlock(stk, pos);
     }
     else
     {
@@ -475,7 +493,10 @@ Node *GetCall(stack_id stk, int *pos)
         }
         (*pos)++;
 
-        arg = GetArguments(stk, pos);
+        if (GetItem(stk, *pos).type != CLOSE_BRACKET)
+        {
+            arg = GetArguments(stk, pos);
+        }
 
         if (GetItem(stk, *pos).type != CLOSE_BRACKET)
         {
@@ -532,6 +553,8 @@ Node *GetExpression(stack_id stk, int *pos)
         Node *second_node = GetAnd(stk, pos);
 
         node = CreateNode("OP", "OR", node, second_node);
+
+        Token = GetItem(stk, *pos);
     }
 
     return node;
@@ -541,37 +564,17 @@ Node *GetAnd(stack_id stk, int *pos)
 {
     assert(pos);
 
-    Node *node = GetNot(stk, pos);
+    Node *node = GetCompare(stk, pos);
 
     token Token = GetItem(stk, *pos);
     while (Token.type == AND)
     {
         (*pos)++;
-        Node *second_node = GetNot(stk, pos);
+        Node *second_node = GetCompare(stk, pos);
 
         node = CreateNode("OP", "AND", node, second_node);
-    }
-
-    return node;
-}
-
-Node *GetNot(stack_id stk, int *pos)
-{
-    assert(pos);
-
-    bool isNegative = false;
-
-    token Token = GetItem(stk, *pos);
-    if (Token.type == NOT)
-    {
-        (*pos)++;
-        isNegative = true;
-    }
-
-    Node *node = GetCompare(stk, pos);
-    if (isNegative)
-    {
-        node = CreateNode("OP", "NOT", nullptr, node);
+        
+        Token = GetItem(stk, *pos);
     }
 
     return node;
@@ -636,6 +639,8 @@ Node *GetSum(stack_id stk, int *pos)
         Token = GetItem(stk, *pos);
 
         node = CreateNode("OP", (type == ADD) ? "ADD" : "SUB", node, second_node);
+
+        Token = GetItem(stk, *pos);
     }
 
     return node;
@@ -645,7 +650,7 @@ Node *GetMul(stack_id stk, int *pos)
 {
     assert(pos);
 
-    Node *node = GetUnary(stk, pos);
+    Node *node = GetNot(stk, pos);
 
     token Token = GetItem(stk, *pos);
     while (Token.type == MUL || Token.type == DIV)
@@ -653,11 +658,35 @@ Node *GetMul(stack_id stk, int *pos)
         Type type = Token.type;
 
         (*pos)++;
-        Node *second_node = GetUnary(stk, pos);
+        Node *second_node = GetNot(stk, pos);
 
         Token = GetItem(stk, *pos);
 
         node = CreateNode("OP", (type == MUL) ? "MUL" : "DIV", node, second_node);
+    
+        Token = GetItem(stk, *pos);
+    }
+
+    return node;
+}
+
+Node *GetNot(stack_id stk, int *pos)
+{
+    assert(pos);
+
+    bool isNegative = false;
+
+    token Token = GetItem(stk, *pos);
+    if (Token.type == NOT)
+    {
+        (*pos)++;
+        isNegative = true;
+    }
+
+    Node *node = GetUnary(stk, pos);
+    if (isNegative)
+    {
+        node = CreateNode("OP", "NOT", nullptr, node);
     }
 
     return node;
@@ -763,6 +792,11 @@ static Node *CreateNode(const char *type, const char *value, Node *left, Node *r
     node->left  = left;
     node->right = right;
 
+    if (left != nullptr)
+        left->parent = node;
+    if (right != nullptr)
+        right->parent = node;
+
     return node;
 }
 
@@ -789,7 +823,7 @@ static void PrintSyntaxError(const char *str, const char *err_sym, const char *m
 {
     assert(str && err_sym && msg);
 
-    printf("Syntax error in symbol %c in line %d. %s.\n\n", *err_sym, line, msg);
+    printf("Syntax error in symbol '%c' in line %d. %s.\n\n", *err_sym, line, msg);
 
     int pos = err_sym - str;
     

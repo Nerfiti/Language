@@ -1,15 +1,37 @@
-var g 1
+var GLOBAL 0
 
-define GetNextNumber(a)
+define GetPrevNumber(num)
 {
-    return a + GLOBAL_VARIABLE
+    return num-1
 }
 
 define main()
 {
-    var a 0
-    call GetNextNumber(a)
-    call print(a)
+    var number 1
+    var fact call factorial(number+2)
 
-    return 1
+    {
+        call print(fact)
+    }
+
+    while (fact != 1 || 1 < 0)
+    {
+    	fact = call GetPrevNumber(fact)
+    }
+    
+    if (a == fact && 1 >= 1)
+    {
+        fact = (fact + 1) * 1 / 1
+    }
+    else
+    {
+        fact = fact - 1
+    }
+
+    return fact + call GetMinusOne()
+}
+
+define GetMinusOne()
+{
+    return !-5 - 1
 }
